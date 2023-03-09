@@ -1,4 +1,4 @@
-<h2 align="center"> Forecasting & optimization project </h2>
+<h2 align="center"> Portfolio forecasting & optimization project </h2>
 <p align="center"><a href="https://github.com/AnhSN/becode-financial_engineering_intro.git">
 <img src="assets/BeCode_color.png" alt="Logo of BeCode"></a></p>
 
@@ -69,7 +69,7 @@ The project is divided in x folders:
 #### zz
 
 In this folder, we worked on 2 models: one for classification and another one for clustering.
-*classification.py* classifies the data between existing customer and attrited customer. 
+*classification.py* classifies the data between existing customer and attrited customer.
 *clustering.py* defines 6 different profiles of customer and their probability to churn.
 
 <table border="0">
@@ -85,10 +85,10 @@ In this folder, we worked on 2 models: one for classification and another one fo
 
 #### dd
 
-We used Tableau to create a dashboard which allows us to understand customer's profiles. 
+We used Tableau to create a dashboard which allows us to understand customer's profiles.
 It shows the characteristic parameters of attrited customers and the KPI of the data (in numerical form).
 
-<img src="visualizations/Images/0.2-Dashboard Analytics.png" alt="dashboard analytics" align="center">
+`<img src="visualizations/Images/0.2-Dashboard Analytics.png" alt="dashboard analytics" align="center">`
 
 ## Results
 
