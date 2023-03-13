@@ -1,12 +1,18 @@
 import requests
 from bs4 import BeautifulSoup
+import pandas as pd
 
-
-allstocks = ['AAPL', 'YOU']
+headers = {'User-Agent' : 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/110.0'}
+allstocks = []
+#allstocks = ['AAPL', 'YOU']
 stockdata = []
 
+'''
+    getData(symbol) function
+    Will gather the data from the input page.
+    The data is gonna be saved in stockdata with the for loop.
+'''
 def getData(symbol):
-    headers = {'User-Agent' : 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/110.0'}
     url = f'https://finance.yahoo.com/quote/{symbol}'
     r = requests.get(url, headers=headers)
 
