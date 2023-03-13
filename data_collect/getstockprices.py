@@ -3,9 +3,18 @@ from bs4 import BeautifulSoup
 import pandas as pd
 
 headers = {'User-Agent' : 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/110.0'}
-allstocks = []
-#allstocks = ['AAPL', 'YOU']
+allsymbols = []
 stockdata = []
+
+# get symbols from csv
+tickers = pd.read_csv("assets/tickerc.csv", low_memory=False)
+tickers.drop(tickers.columns[[3, 2]], axis=1, inplace=True)
+tickers.dropna()
+tickers[tickers["symbols"].str.contains('^\D')]
+allsymbol = tickers["symbols"].tolist()
+
+print(allsymbol)
+ 
 
 '''
     getData(symbol) function
@@ -28,7 +37,7 @@ def getData(symbol):
     }
     return stock
 
-for symbol in allstocks:
+for symbol in allsymbols:
     stockdata.append(getData(symbol))
 
 print(stockdata)
