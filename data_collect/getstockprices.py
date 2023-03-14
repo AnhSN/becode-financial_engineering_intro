@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+import traceback
 
 headers = {'User-Agent' : 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/110.0'}
 allsymbols = []
@@ -12,10 +13,12 @@ tickers.drop(tickers.columns[[3, 2]], axis=1, inplace=True)
 tickers.dropna()
 # Failed attempt at removing symbols starting with digits
 #tickers[tickers["symbols"].str.contains('^\D')]
-tickers = tickers.iloc[3:191782]
+# Drop rows based on index instead
+#tickers = tickers.iloc[:191782]
+tickers = tickers.iloc[:100]
 allsymbol = tickers["symbols"].tolist()
 
-#print(allsymbol)
+print(allsymbol)
  
 
 '''
@@ -24,21 +27,26 @@ allsymbol = tickers["symbols"].tolist()
     The data is gonna be saved in stockdata with the for loop.
 '''
 def getData(symbol):
-    url = f'https://finance.yahoo.com/quote/{symbol}'
-    r = requests.get(url, headers=headers)
-    # check if connexion is made
-    print(r.status_code)
-    soup = BeautifulSoup(r.text, 'html.parser')
-    stock = {
-        'symbol' : symbol,
-        'price' : soup.find('div', {'class':'D(ib) Mend(20px)'}).find_all('fin-streamer')[0].text,
-        'change' : soup.find('div', {'class':'D(ib) Mend(20px)'}).find_all('span')[0].text,
-        'percentage' : soup.find('div', {'class':'D(ib) Mend(20px)'}).find_all('span')[1].text,
-    }
-    return stock
+    try:
+        url = f'https://finance.yahoo.com/quote/{symbol}'
+        r = requests.get(url, headers=headers)
+        # check if connexion is made
+        print(r.status_code)
+        soup = BeautifulSoup(r.text, 'html.parser')
+        stock = {
+            'symbol' : symbol,
+            'price' : soup.find('div', {'class':'D(ib) Mend(20px)'}).find_all('fin-streamer')[0].text,
+            'change' : soup.find('div', {'class':'D(ib) Mend(20px)'}).find_all('span')[0].text,
+            'percentage' : soup.find('div', {'class':'D(ib) Mend(20px)'}).find_all('span')[1].text,
+        }
+        return stock
+    except:
+        return traceback.print_exc()
 
 for index in range(len(allsymbols)):
+    print(index)
     symbol = allsymbols[index]
+    print(symbol)
     stockdata.append(getData(symbol))
     if symbol == "GOOG":
         break
