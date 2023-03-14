@@ -10,10 +10,12 @@ stockdata = []
 tickers = pd.read_csv("assets/tickerc.csv", low_memory=False)
 tickers.drop(tickers.columns[[3, 2]], axis=1, inplace=True)
 tickers.dropna()
-tickers[tickers["symbols"].str.contains('^\D')]
+# Failed attempt at removing symbols starting with digits
+#tickers[tickers["symbols"].str.contains('^\D')]
+tickers = tickers.iloc[3:191782]
 allsymbol = tickers["symbols"].tolist()
 
-print(allsymbol)
+#print(allsymbol)
  
 
 '''
@@ -24,10 +26,8 @@ print(allsymbol)
 def getData(symbol):
     url = f'https://finance.yahoo.com/quote/{symbol}'
     r = requests.get(url, headers=headers)
-
     # check if connexion is made
-    #print(r.status_code)
-
+    print(r.status_code)
     soup = BeautifulSoup(r.text, 'html.parser')
     stock = {
         'symbol' : symbol,
@@ -37,7 +37,10 @@ def getData(symbol):
     }
     return stock
 
-for symbol in allsymbols:
+for index in range(len(allsymbols)):
+    symbol = allsymbols[index]
     stockdata.append(getData(symbol))
+    if symbol == "GOOG":
+        break
 
 print(stockdata)
