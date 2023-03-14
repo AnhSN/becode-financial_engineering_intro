@@ -28,7 +28,7 @@ print(allsymbol)
 '''
 def getData(symbol):
     try:
-        url = f'https://finance.yahoo.com/quote/{symbol}'
+        url = f'https://finance.yahoo.com/quote/{symbol}/history'
         r = requests.get(url, headers=headers)
         # check if connexion is made
         print(r.status_code)
