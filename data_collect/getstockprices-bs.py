@@ -15,7 +15,7 @@ tickers.dropna()
 #tickers[tickers["symbols"].str.contains('^\D')]
 # Drop rows based on index instead
 #tickers = tickers.iloc[:191782]
-tickers = tickers.iloc[:100]
+tickers = tickers.iloc[:15]
 allsymbol = tickers["symbols"].tolist()
 
 print(allsymbol)
@@ -24,7 +24,7 @@ print(allsymbol)
 '''
     getData(symbol) function
     Will gather the data from the input page.
-    The data is gonna be saved in stockdata with the for loop.
+    The data is gonna be saved in stockdata with the for loop below.
 '''
 def getData(symbol):
     try:
@@ -43,12 +43,9 @@ def getData(symbol):
     except:
         return traceback.print_exc()
 
-for index in range(len(allsymbols)):
-    print(index)
-    symbol = allsymbols[index]
-    print(symbol)
+# get the data with the function getData and saves it to a dictionnary named stockdata
+for index in range(len(allsymbol)):
+    symbol = allsymbol[index]
     stockdata.append(getData(symbol))
-    if symbol == "GOOG":
-        break
 
 print(stockdata)
