@@ -59,7 +59,7 @@ It contains the .csv files used in this project as well as the illustration of t
 
 ## Results
 
-I successfully managed to extract data from [Yahoo finance](https://finance.yahoo.com) and store it into a database using selenium, pandas and sqlalchemy. 
+I successfully managed to extract data from [Yahoo finance](https://finance.yahoo.com) and store it into a database using selenium, pandas and sqlalchemy.
 
 Using pandas, BeautifulSoup and requests, I collected the current price and change about several ticker symbols. The first improvement which should be made would be to combine both scrapers so it would collect the history data of more stocks.
 
@@ -67,4 +67,4 @@ I've also tried to implement a DAG and docker but unfortunately, due to a proble
 
 ## Contact
 
-project made by [Anh Sophie Noël](https://github.com/AnhSN).
+project made by [Anh Sophie Noël](https://www.linkedin.com/in/anhsn-vision/).
