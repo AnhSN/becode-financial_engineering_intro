@@ -1,3 +1,6 @@
+##### FOR EDUCATIONAL PURPOSE ONLY
+##### Would be removed in a real deployment case scenario.
+
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
