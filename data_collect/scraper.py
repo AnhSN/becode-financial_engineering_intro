@@ -48,4 +48,4 @@ with webdriver.Firefox() as driver:
     df = pd.DataFrame(data = data_by_row, columns = ['Date', 'Open', 'High', 'Low', 'Close', 'Adj_Close', 'Volume'])
 
 print(df.head())
-df.to_csv('database/AAPL.csv', index = False)
+df.to_csv('assets/AAPL.csv', index = False)
