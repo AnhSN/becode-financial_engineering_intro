@@ -1,8 +1,5 @@
 import pandas
-from dateutil.parser import parse
-from sqlalchemy import Column, Date, Float, Integer, create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy import Date, create_engine
 
 engine = create_engine('sqlite:///db.sqlite3')
 df = pandas.read_csv('assets/AAPL.csv', parse_dates=['Date'])
